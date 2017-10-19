@@ -12,7 +12,6 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:size) %></th>
       <th><%= model_class.human_attribute_name(:color) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -22,11 +21,10 @@
         <td><%= link_to product.id, product_path(product) %></td>
         <td><%= product.name %></td>
         <td><%= image_tag product.image.url(:medium) %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price) %></td>
         <td><%= product.description %></td>
         <td><%= product.size %></td>
         <td><%= product.color %></td>
-        <td><%=l product.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       product_path(product), :class => 'btn btn-default btn-xs' %>

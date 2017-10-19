@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @product1 = Product.find(1)
-    @product2 = Product.find(3)
-    @product3 = Product.find(4)
+    @product = Product.find(1, 2, 3)
   end
 
   def about

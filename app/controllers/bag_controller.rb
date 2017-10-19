@@ -17,7 +17,7 @@ class BagController < ApplicationController
   	@bag = Bag.new(bag_params)
   	@bag.buyer_id = current_buyer.id
   	@bag.product_id = params[:product_id]
-  	@bag.price = params[:price].to_i * params[:cart][:quantity].to_i
+  	@bag.price = BigDecimal.new(params[:price]) * params[:cart][:quantity].to_i
 
   	respond_to do |format|
 	  	if @bag.save

@@ -20,8 +20,8 @@
     <% @bags.each do |bag| %>
       <tr>
         <td><%= bag.product.name %></td>
-        <td><%= image_tag bag.product.image.url(:medium) %></td>
-        <td><%= bag.price %></td>
+        <td><%= image_tag bag.product.image.url(:thumb) %></td>
+        <td><%= number_to_currency(bag.price) %></td>
         <td><%= bag.size %></td>
         <td><%= bag.color %></td>
         <td><%= bag.quantity %></td>
@@ -35,4 +35,24 @@
     <% end %>
   </tbody>
 </table>
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: <%= number_to_currency(@bags.sum(:price)) %></span>
+    </label>    
+    <label class="quantity">
+      <span>Total Items: <%= @bags.sum(:quantity) %></span>
+    </label>
+  </article>
 
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Your order of <%= @bags.sum(:quantity) %> x T-Shirts. "
+          data-amount="<%= @bags.sum(:price) * 100 %>"
+          data-locale="auto"></script>
+<% end %>
