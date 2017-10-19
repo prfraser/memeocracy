@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	resources :bag
   devise_for :buyers
   resources :products
+  resources :charges
   post 'products/:id', to: 'bag#create'
   devise_for :sellers
   root 'pages#home'
