@@ -2,21 +2,72 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+<div class="container"> 
+  <div class="row">
+    <div class="col-sm-2" >
+      <%= image_tag @product.image.url(:medium) %>
+    </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @product.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= image_tag @product.image.url(:medium) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @product.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @product.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
-  <dd><%= @product.size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:color) %>:</strong></dt>
-  <dd><%= @product.color %></dd>
-</dl>
+    <div class="col-sm-10" >
+      <dl class="dl-horizontal">
+        <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+        <dd><%= @product.name %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+        <dd>$<%= @product.price %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+        <dd><%= @product.description %></dd>
+        <br>
+        <dt><strong>Available Sizes:</strong></dt>
+        <dd><%= @product.size %></dd>
+        <br>
+        <dt><strong>Available Colours:</strong></dt>
+        <dd><%= @product.color %></dd>
+      
+        <br>
+      <%= form_for :cart, url: product_path, :html => { :class => "form-horizontal product" } do |f| %>
+        <%= f.hidden_field_tag(:product_id, @product.id) %>
+        <%= f.hidden_field_tag(:price, @product.price) %>
+        <div class="form-group">
+          <dt><%= f.label :size %></dt>
+          <div class="col-lg-10">
+            <%= f.select(:size, @product.size.split(' ').each do
+              |size| size end, { include_blank: true }) %>
+          </div>
+          <%=f.error_span(:size) %>
+        </div> 
+
+        <div class="form-group">
+          <dt><%= f.label :color%></dt> 
+          <div class="col-lg-10">
+            <%= f.select(:color, @product.color.split(' ').each do
+              |color| color end, { include_blank: true }) %>
+          </div>
+          <%=f.error_span(:color) %>
+        </div> 
+
+        <div class="form-group">
+          <dt><%= f.label :quantity%></dt> 
+          <div class="col-lg-10">
+            <%= f.select(:quantity, ['1', '2', '3', '4', '5', '6']) %>
+          </div>
+          <%=f.error_span(:quantity) %>
+        </div> 
+        
+        <div class="form-group">
+          <div class="col-lg-offset-2 col-lg-10">
+            <%= f.submit "Add to Cart", :class => 'btn btn-primary' %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                      root_path, :class => 'btn btn-default' %>
+          </div>
+        </div>
+       <% end %>
+       </dl>
+    </div>
+  </div>
+</div>
+
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               root_path, :class => 'btn btn-default'  %>
+
+
