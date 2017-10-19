@@ -1,0 +1,38 @@
+<h1>Your Cart:</h1>
+
+<%- model_class = Bag -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:size) %></th>
+      <th><%= model_class.human_attribute_name(:color) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bags.each do |bag| %>
+      <tr>
+        <td><%= bag.product.name %></td>
+        <td><%= image_tag bag.product.image.url(:medium) %></td>
+        <td><%= bag.product.price %></td>
+        <td><%= bag.product.size %></td>
+        <td><%= bag.product.color %></td>
+        <td><%= bag.quantity %></td>
+        <td><%= link_to "Remove",
+                      bag,
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

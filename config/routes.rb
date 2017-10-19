@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+	resources :bag
   devise_for :buyers
   resources :products
   devise_for :sellers
   root 'pages#home'
   get 'pages/about'
   get 'pages/submit'
-  
   get 'pages/contact', to: 'pages#contact'
   post 'pages/contact', to: 'pages#submit'
 
