@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/about'
   get 'pages/submit'
-  
+  get 'bag/index'
   get 'pages/contact', to: 'pages#contact'
   post 'pages/contact', to: 'pages#submit'
 
