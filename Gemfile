@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'twitter-bootstrap-rails'
+gem 'devise'
+gem 'devise-bootstrap-views'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
