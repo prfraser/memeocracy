@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Memeocracy. 
 
-Things you may want to cover:
+Memeocracy is a website that sells motivational meme tshirts.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Built using Ruby on Rails in the Coder Academy twoday hackathon!
