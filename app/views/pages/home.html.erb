@@ -1,2 +1,37 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="center jumbotron">
+  <%= image_tag "Memeocracy.shirt (2).png" %>
+</div>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt><strong>Name: </strong></dt>
+      <dd><p class="product-name"><%= @product1.name %></p></dd>
+      <dd><%= image_tag @product1.image.url(:medium) %></dd>
+
+       <%= link_to t('.show', :default => t("helpers.links.show")),
+                  product_path(@product1), :class => 'btn btn-default btn-xs' %>
+    </dl>
+  </div>
+
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt><strong>Name: </strong></dt>
+      <dd><p class="product-name"><%= @product2.name %></p></dd>
+      <dd><%= image_tag @product2.image.url(:medium) %></dd>
+    </dl>
+    <%= link_to t('.show', :default => t("helpers.links.show")),
+               product_path(@product2), :class => 'btn btn-default btn-xs' %>
+  </div>
+
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt><strong>Name: </strong></dt>
+      <dd><p class="product-name"><%= @product3.name %></p></dd>
+      <dd><%= image_tag @product3.image.url(:medium) %></dd>
+    </dl>
+    <%= link_to t('.show', :default => t("helpers.links.show")),
+               product_path(@product3), :class => 'btn btn-default btn-xs' %>
+  </div>
+</div>
