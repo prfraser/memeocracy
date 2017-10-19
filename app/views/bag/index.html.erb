@@ -21,9 +21,9 @@
       <tr>
         <td><%= bag.product.name %></td>
         <td><%= image_tag bag.product.image.url(:medium) %></td>
-        <td><%= bag.product.price %></td>
-        <td><%= bag.product.size %></td>
-        <td><%= bag.product.color %></td>
+        <td><%= bag.price %></td>
+        <td><%= bag.size %></td>
+        <td><%= bag.color %></td>
         <td><%= bag.quantity %></td>
         <td><%= link_to "Remove",
                       bag,
