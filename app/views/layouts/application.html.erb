@@ -34,6 +34,12 @@
 						<% if seller_signed_in? %>
 	            <li><%= link_to(current_seller.email, edit_seller_registration_path) %></li>
 	            <li><%= link_to "Seller Sign out", destroy_seller_session_path, :method => :delete %></li>
+		        <% elsif buyer_signed_in? %>
+	            <li><%= link_to(current_buyer.email, edit_buyer_registration_path) %></li>
+	            <li><%= link_to "Sign out", destroy_buyer_session_path, :method => :delete %></li>
+	          <% else %>
+	            <li><%= link_to('Sign in', new_buyer_session_path) %></li>
+	            <li><%= link_to('Sign up', new_buyer_registration_path) %></li>
 	          <% end %>
 	        </ul>
 	      </div><!--/.nav-collapse -->
