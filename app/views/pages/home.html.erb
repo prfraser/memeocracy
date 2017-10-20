@@ -5,12 +5,11 @@
 <div class="center"> 
   <div class="row">
     <% @product.each do |product| %>
-      <div class="col-sm-4 product-box">
+      <div class="col-sm-3 product-box">
         <div class="panel panel-primary">
-          <div class="panel-heading"><p><%= product.name %></p></div>
-          <div class="panel-body"><%= image_tag product.image.url(:medium) %></div>
-          <div class="panel-footer"> <%= link_to t('.show', :default => t("helpers.links.show")),
-                      product_path(product), :class => 'btn btn-primary' %></div>
+          <div class="panel-heading"><%= product.name %></div>
+          <div class="panel-body"><%= image_tag product.image.url(:medium), :class=>"center-panel-image"%></div>
+          <div class="panel-footer"> <%= link_to t('.show', :default => t("helpers.links.show")), product_path(product), :class => 'btn btn-primary center-panel-image' %></div>
         </div>
       </div>
       <% end %>

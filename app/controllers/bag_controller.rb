@@ -1,4 +1,5 @@
 class BagController < ApplicationController
+  before_action :authenticate_buyer!
 	before_action :set_bag, only: [:destroy]
 
 	def index
