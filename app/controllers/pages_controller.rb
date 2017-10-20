@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @product = Product.find(1, 2, 3)
+    @product = Product.all
   end
 
   def about
