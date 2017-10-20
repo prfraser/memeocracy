@@ -5,7 +5,7 @@ class ContactMailer < ApplicationMailer
 		@question = question
 		@user_name = user_name
 
-		mail(to: ENV.fetch('MY_EMAIL'), subject: "Memeocracy Question from: #{@from_email}.")
+		mail(to: ENV['MY_EMAIL'], subject: "Memeocracy Question from: #{@from_email}.")
 	end
 
 
